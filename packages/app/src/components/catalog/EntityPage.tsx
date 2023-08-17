@@ -55,7 +55,14 @@ import {
   RELATION_PROVIDES_API,
 } from '@backstage/catalog-model';
 
+import { EntityKubernetesContent } from '@backstage/plugin-kubernetes';
 import { TechDocsAddons } from '@backstage/plugin-techdocs-react';
+import {
+  LatestPipelineRun,
+  isTektonCIAvailable,
+  TektonPage,
+} from '@janus-idp/backstage-plugin-tekton';
+import { TopologyPage } from '@janus-idp/backstage-plugin-topology';
 import { ReportIssue } from '@backstage/plugin-techdocs-module-addons-contrib';
 
 const techdocsContent = (
@@ -75,6 +82,9 @@ const cicdContent = (
     </EntitySwitch.Case>
 
     <EntitySwitch.Case>
+      <EntitySwitch.Case if={isTektonCIAvailable}>
+        <LatestPipelineRun linkTekton />
+      </EntitySwitch.Case>
       <EmptyState
         title="No CI/CD available for this entity"
         missing="info"
@@ -140,16 +150,23 @@ const overviewContent = (
   </Grid>
 );
 
-const serviceEntityPage = (
+const systemOrWebsitePage = (
   <EntityLayout>
     <EntityLayout.Route path="/" title="Overview">
       {overviewContent}
     </EntityLayout.Route>
-
+    <EntityLayout.Route path="/topology" title="Topology">
+      <TopologyPage />
+    </EntityLayout.Route>
+    <EntityLayout.Route path="/kubernetes" title="Kubernetes">
+      <EntityKubernetesContent refreshIntervalMs={30000} />
+    </EntityLayout.Route>
     <EntityLayout.Route path="/ci-cd" title="CI/CD">
       {cicdContent}
     </EntityLayout.Route>
-
+    <EntityLayout.Route path="/tekton" title="Tekton">
+      <TektonPage />
+    </EntityLayout.Route>
     <EntityLayout.Route path="/api" title="API">
       <Grid container spacing={3} alignItems="stretch">
         <Grid item md={6}>
@@ -159,33 +176,6 @@ const serviceEntityPage = (
           <EntityConsumedApisCard />
         </Grid>
       </Grid>
-    </EntityLayout.Route>
-
-    <EntityLayout.Route path="/dependencies" title="Dependencies">
-      <Grid container spacing={3} alignItems="stretch">
-        <Grid item md={6}>
-          <EntityDependsOnComponentsCard variant="gridItem" />
-        </Grid>
-        <Grid item md={6}>
-          <EntityDependsOnResourcesCard variant="gridItem" />
-        </Grid>
-      </Grid>
-    </EntityLayout.Route>
-
-    <EntityLayout.Route path="/docs" title="Docs">
-      {techdocsContent}
-    </EntityLayout.Route>
-  </EntityLayout>
-);
-
-const websiteEntityPage = (
-  <EntityLayout>
-    <EntityLayout.Route path="/" title="Overview">
-      {overviewContent}
-    </EntityLayout.Route>
-
-    <EntityLayout.Route path="/ci-cd" title="CI/CD">
-      {cicdContent}
     </EntityLayout.Route>
 
     <EntityLayout.Route path="/dependencies" title="Dependencies">
@@ -226,14 +216,9 @@ const defaultEntityPage = (
 
 const componentPage = (
   <EntitySwitch>
-    <EntitySwitch.Case if={isComponentType('service')}>
-      {serviceEntityPage}
+    <EntitySwitch.Case if={isComponentType(['service', 'website'])}>
+      {systemOrWebsitePage}
     </EntitySwitch.Case>
-
-    <EntitySwitch.Case if={isComponentType('website')}>
-      {websiteEntityPage}
-    </EntitySwitch.Case>
-
     <EntitySwitch.Case>{defaultEntityPage}</EntitySwitch.Case>
   </EntitySwitch>
 );
