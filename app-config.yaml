@@ -116,6 +116,18 @@ catalog:
     #   target: https://github.com/backstage/backstage/blob/master/packages/catalog-model/examples/acme-corp.yaml
     #   rules:
     #     - allow: [User, Group]
+  providers: 
+    aap:
+      dev:
+        baseUrl: ${AAP_BASE_URL}
+        authorization: 'Bearer ${AAP_AUTH_TOKEN}'
+        owner: ${AAP_OWNER}
+        system: ${AAP_SYSTEM}
+        schedule: # optional; same options as in TaskScheduleDefinition
+          # supports cron, ISO duration, "human duration" as used in code
+          frequency: { minutes: 1 }
+          # supports ISO duration, "human duration" as used in code
+          timeout: { minutes: 1 }
 
 # Plugin: Kubernetes, OCM
 kubernetes:
