@@ -64,6 +64,7 @@ import {
 } from '@janus-idp/backstage-plugin-tekton';
 import { TopologyPage } from '@janus-idp/backstage-plugin-topology';
 import { ReportIssue } from '@backstage/plugin-techdocs-module-addons-contrib';
+import { isQuayAvailable, QuayPage } from '@janus-idp/backstage-plugin-quay';
 
 const techdocsContent = (
   <EntityTechdocsContent>
@@ -166,6 +167,9 @@ const systemOrWebsitePage = (
     </EntityLayout.Route>
     <EntityLayout.Route path="/tekton" title="Tekton">
       <TektonPage />
+    </EntityLayout.Route>
+    <EntityLayout.Route if={isQuayAvailable} path="/quay" title="Quay">
+      <QuayPage />
     </EntityLayout.Route>
     <EntityLayout.Route path="/api" title="API">
       <Grid container spacing={3} alignItems="stretch">

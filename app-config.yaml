@@ -49,11 +49,15 @@ integrations:
             ${GITHUB_APP_PRIVATE_KEY}
 
 proxy:
-  ### Example for how to add a proxy endpoint for the frontend.
-  ### A typical reason to do this is to handle HTTPS and CORS for internal services.
-  # '/test':
-  #   target: 'https://example.com'
-  #   changeOrigin: true
+  '/quay/api':
+    target: 'https://quay.io'
+    headers:
+      X-Requested-With: 'XMLHttpRequest'
+      # Uncomment the following line to access a private Quay Repository using a token
+      # Authorization: 'Bearer <YOUR TOKEN>'
+    changeOrigin: true
+    # Change to "false" in case of using self hosted quay instance with a self-signed certificate
+    secure: true
 
 # Reference documentation http://backstage.io/docs/features/techdocs/configuration
 # Note: After experimenting with basic setup, use CI/CD to generate docs
@@ -138,6 +142,9 @@ kubernetes:
           authProvider: 'serviceAccount'
           skipTLSVerify: true
           serviceAccountToken: ${K8S_CLUSTER_TOKEN}
+quay:
+  # The UI url for Quay, used to generate the link to Quay
+  uiUrl: 'https://quay.io'
 
 enabled:
   github: ${GITHUB_ENABLED}
