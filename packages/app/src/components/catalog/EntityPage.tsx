@@ -66,6 +66,10 @@ import { TopologyPage } from '@janus-idp/backstage-plugin-topology';
 import { ReportIssue } from '@backstage/plugin-techdocs-module-addons-contrib';
 import { isQuayAvailable, QuayPage } from '@janus-idp/backstage-plugin-quay';
 import { AcrPage, isAcrAvailable } from '@janus-idp/backstage-plugin-acr';
+import {
+  isJfrogArtifactoryAvailable,
+  JfrogArtifactoryPage,
+} from '@janus-idp/backstage-plugin-jfrog-artifactory';
 
 const techdocsContent = (
   <EntityTechdocsContent>
@@ -182,6 +186,13 @@ const systemOrWebsitePage = (
           </EntitySwitch.Case>
         </EntitySwitch>
       </Grid>
+    </EntityLayout.Route>
+    <EntityLayout.Route
+      if={isJfrogArtifactoryAvailable}
+      path="/jfrog-artifactory"
+      title="Jfrog Artifactory"
+    >
+      <JfrogArtifactoryPage />
     </EntityLayout.Route>
     <EntityLayout.Route path="/api" title="API">
       <Grid container spacing={3} alignItems="stretch">

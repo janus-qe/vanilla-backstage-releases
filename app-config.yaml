@@ -67,6 +67,12 @@ proxy:
       Authorization: 'Basic ${ACR_AUTH_TOKEN}'
     # Change to "false" in case of using self hosted artifactory instance with a self-signed certificate
     secure: true
+  '/jfrog-artifactory/api':
+    target: 'http://<hostname>:8082' # or https://<customer>.jfrog.io
+    headers:
+      # Authorization: 'Bearer <YOUR TOKEN>'
+    # Change to "false" in case of using self hosted artifactory instance with a self-signed certificate
+    secure: true
 
 # Reference documentation http://backstage.io/docs/features/techdocs/configuration
 # Note: After experimenting with basic setup, use CI/CD to generate docs
