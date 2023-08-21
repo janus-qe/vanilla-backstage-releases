@@ -4738,6 +4738,21 @@
     "@backstage/plugin-catalog-node" "^1.4.0"
     winston "^3.2.1"
 
+"@janus-idp/backstage-plugin-acr@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@janus-idp/backstage-plugin-acr/-/backstage-plugin-acr-1.1.0.tgz#8d2833b0dca3521a1fac3b9cea01d52692425ad3"
+  integrity sha512-Tb/b/sy7UUCr3v0M9vSJKR2qjC4X8Jz/z6GINhMHLaLuhH2aWnDn/hDWFuirioqyBHz1QKzCQntzEl28fdV8Xg==
+  dependencies:
+    "@backstage/catalog-model" "^1.4.1"
+    "@backstage/core-components" "^0.13.3"
+    "@backstage/core-plugin-api" "^1.5.3"
+    "@backstage/plugin-catalog-react" "^1.8.0"
+    "@backstage/theme" "^0.4.1"
+    "@material-ui/core" "^4.9.13"
+    "@material-ui/icons" "^4.9.1"
+    "@material-ui/lab" "^4.0.0-alpha.45"
+    react-use "^17.2.4"
+
 "@janus-idp/backstage-plugin-keycloak-backend@1.5.0":
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/@janus-idp/backstage-plugin-keycloak-backend/-/backstage-plugin-keycloak-backend-1.5.0.tgz#e42f5d46da4d7a28839f3c6cd7e311329b617e6c"

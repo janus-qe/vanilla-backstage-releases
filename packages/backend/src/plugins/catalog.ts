@@ -48,7 +48,7 @@ export default async function createPlugin(
   const isAnsibleEnabled =
     env.config.getOptionalBoolean('enabled.ansible') || false;
 
-  if (isAnsibleEnabled){
+  if (isAnsibleEnabled) {
     builder.addEntityProvider(
       AapResourceEntityProvider.fromConfig(env.config, {
         logger: env.logger,
@@ -60,7 +60,7 @@ export default async function createPlugin(
     );
   }
 
-  if (isKeycloakEnabled){
+  if (isKeycloakEnabled) {
     builder.addEntityProvider(
       KeycloakOrgEntityProvider.fromConfig(env.config, {
         id: 'development',
@@ -75,7 +75,7 @@ export default async function createPlugin(
       }),
     );
   }
-  
+
   builder.addProcessor(new ScaffolderEntitiesProcessor());
   const { processingEngine, router } = await builder.build();
   await processingEngine.start();

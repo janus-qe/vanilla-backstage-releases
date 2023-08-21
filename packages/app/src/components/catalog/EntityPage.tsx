@@ -65,6 +65,7 @@ import {
 import { TopologyPage } from '@janus-idp/backstage-plugin-topology';
 import { ReportIssue } from '@backstage/plugin-techdocs-module-addons-contrib';
 import { isQuayAvailable, QuayPage } from '@janus-idp/backstage-plugin-quay';
+import { AcrPage, isAcrAvailable } from '@janus-idp/backstage-plugin-acr';
 
 const techdocsContent = (
   <EntityTechdocsContent>
@@ -170,6 +171,17 @@ const systemOrWebsitePage = (
     </EntityLayout.Route>
     <EntityLayout.Route if={isQuayAvailable} path="/quay" title="Quay">
       <QuayPage />
+    </EntityLayout.Route>
+    <EntityLayout.Route path="/acr" title="ACR">
+      <Grid container spacing={3} alignItems="stretch">
+        <EntitySwitch>
+          <EntitySwitch.Case if={isAcrAvailable}>
+            <Grid item sm={12}>
+              <AcrPage />
+            </Grid>
+          </EntitySwitch.Case>
+        </EntitySwitch>
+      </Grid>
     </EntityLayout.Route>
     <EntityLayout.Route path="/api" title="API">
       <Grid container spacing={3} alignItems="stretch">
