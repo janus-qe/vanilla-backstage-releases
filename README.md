@@ -37,7 +37,7 @@ This repository serves as an archive of vanilla backstage releases with its depe
     e.g. Backstage 1.17.2 release
 
     ```console
-    git switch -c --orphan 1.17.x
+    git switch --orphan 1.17.x
     ```
 
 6. Git commit, push, etc
