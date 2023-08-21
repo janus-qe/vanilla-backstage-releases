@@ -180,6 +180,20 @@ quay:
   # The UI url for Quay, used to generate the link to Quay
   uiUrl: 'https://quay.io'
 
+argocd:
+  username: ${ARGOCD_USERNAME}
+  password: ${ARGOCD_PASSWORD}
+  appLocatorMethods:
+    - type: 'config'
+      instances:
+        - name: argoInstance1
+          url: ${ARGOCD_INSTANCE1_URL}
+          token: ${ARGOCD_AUTH_TOKEN}
+        - name: argoInstance2
+          url: ${ARGOCD_INSTANCE2_URL}
+          token: ${ARGOCD_AUTH_TOKEN2}
+
 enabled:
   keycloak: ${KEYCLOAK_ENABLED}
   ansible: ${ANSIBLE_ENABLED}
+  argocd: ${ARGOCD_ENABLED}

@@ -70,6 +70,10 @@ import {
   isJfrogArtifactoryAvailable,
   JfrogArtifactoryPage,
 } from '@janus-idp/backstage-plugin-jfrog-artifactory';
+import {
+  EntityArgoCDHistoryCard,
+  isArgocdAvailable,
+} from '@roadiehq/backstage-plugin-argo-cd';
 
 const techdocsContent = (
   <EntityTechdocsContent>
@@ -153,6 +157,13 @@ const overviewContent = (
     <Grid item md={8} xs={12}>
       <EntityHasSubcomponentsCard variant="gridItem" />
     </Grid>
+    <EntitySwitch>
+      <EntitySwitch.Case if={isArgocdAvailable}>
+        <Grid item sm={6}>
+          <EntityArgoCDHistoryCard />
+        </Grid>
+      </EntitySwitch.Case>
+    </EntitySwitch>
   </Grid>
 );
 

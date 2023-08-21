@@ -54,3 +54,14 @@ catalog:
         realm: temp
         clientId: temp
         clientSecret: temp
+
+argocd:
+  appLocatorMethods:
+    - type: 'config'
+      instances:
+        - name: argoInstance1
+          url: temp
+          token: temp
+        - name: argoInstance2
+          url: temp
+          token: temp
