@@ -69,7 +69,7 @@ techdocs:
     runIn: 'docker' # Alternatives - 'local'
   publisher:
     type: 'local' # Alternatives - 'googleGcs' or 'awsS3'. Read documentation for using alternatives.
-    
+
 auth:
   # see https://backstage.io/docs/auth/ to learn about auth providers
   environment: development
@@ -116,7 +116,7 @@ catalog:
     #   target: https://github.com/backstage/backstage/blob/master/packages/catalog-model/examples/acme-corp.yaml
     #   rules:
     #     - allow: [User, Group]
-  providers: 
+  providers:
     aap:
       dev:
         baseUrl: ${AAP_BASE_URL}
@@ -128,6 +128,13 @@ catalog:
           frequency: { minutes: 1 }
           # supports ISO duration, "human duration" as used in code
           timeout: { minutes: 1 }
+    keycloakOrg:
+      default:
+        baseUrl: https://<keycloak_host>/auth
+        loginRealm: ${KEYCLOAK_REALM}
+        realm: ${KEYCLOAK_REALM}
+        clientId: ${KEYCLOAK_CLIENTID}
+        clientSecret: ${KEYCLOAK_CLIENTSECRET}
 
 # Plugin: Kubernetes, OCM
 kubernetes:
@@ -159,5 +166,5 @@ quay:
   uiUrl: 'https://quay.io'
 
 enabled:
-  github: ${GITHUB_ENABLED}
-  kubernetes: ${K8S_ENABLED}
+  keycloak: ${KEYCLOAK_ENABLED}
+  ansible: ${ANSIBLE_ENABLED}
