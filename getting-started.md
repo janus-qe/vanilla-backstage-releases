@@ -28,7 +28,7 @@
       - `${ARTIFACTORY_TOKEN}`: API token
       - `${ARTIFACTORY_SECURE}`: Change to `false` in case of using self hosted artifactory instance with a self-signed certificate
     
-      - Setup the ArgoCD instances(s)
+    - Setup the ArgoCD instances(s)
     
         - If using a shared username and password across the instances, you can define them in the username and password variables and arbitrarily assign the urls and tokens
         - If using tokens for each individual instance, you can assign arbitrary variables to the tokens
@@ -39,15 +39,15 @@
         - `${ARGOCD_INSTANCE2_URL}`: URL to the instance
         - `${ARGOCD_AUTH_TOKEN2}`: token to the instance
     
-      - Setup the Keycloak instance(s)
+    - Setup the Keycloak instance(s)
     
         - `${KEYCLOAK_BASE_URL}`: base URL of the Keycloak instance
         - `${KEYCLOAK_LOGIN_REALM}`: login realm
         - `${KEYCLOAK_REALM}`: realm
         - `${KEYCLOAK_CLIENT_ID}`: client id
         - `${KEYCLOAK_CLIENT_SECRET}`: client secret
-    
-      - Setup the Azure Cloud Registry (ACR) plugin
+        
+    - Setup the Azure Cloud Registry (ACR) plugin
         - `${ACR_SERVER_API_URL}`: the Azure Container Registry server api url. ex: `https://mycontainerregistry.azurecr.io/acr/v1/`
         - `${ACR_AUTH_TOKEN}`: the authorization token (Can either be a `Basic` or `Bearer` token)
           - To generate a `Basic` token, Go to your Azure Container Registry portal, and go to the `Access Keys` tab.
@@ -57,7 +57,7 @@
             - Ex: if `username` = john@example.com and `password` = abc123, then our `${ACR_AUTH_TOKEN}` is `Basic am9obkBleGFtcGxlLmNvbTphYmMxMjM=`
           - To generate a `Bearer` token, go to this [link](https://learn.microsoft.com/en-us/azure/container-registry/container-registry-authentication?tabs=azure-cli), then append `Bearer` in front of it and set `${ACR_AUTH_TOKEN}` to it.
         - `${ACR_SECURE}`: Change to "false" in case of using self hosted artifactory instance with a self-signed certificate
-      - Setup the Ansible Automation Platform (AAP) plugin
+    - Setup the Ansible Automation Platform (AAP) plugin
         - `${AAP_BASE_URL}`: Base URL to the AAP instance
         - `${AAP_AUTH_TOKEN}`: Authorization Token for the AAP instance
         - `${AAP_OWNER}`: The user entity that will be the owner of the AAP catalog entities
