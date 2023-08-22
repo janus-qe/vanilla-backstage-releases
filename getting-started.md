@@ -63,4 +63,7 @@
     - `${AAP_AUTH_TOKEN}`: Authorization Token for the AAP instance
     - `${AAP_OWNER}`: The user entity that will be the owner of the AAP catalog entities
     - `${AAP_SYSTEM}`: The system entity that will be applied to the AAP catalog entities
-    -
+
+3. Run `yarn install` to install the dependencies
+4. Start the application using `yarn dev`
+5. Navigate to <http://localhost:3000>

@@ -1,6 +1,12 @@
 import { EntitySwitch } from '@backstage/plugin-catalog';
-import { EntityGithubActionsContent, isGithubActionsAvailable } from '@backstage/plugin-github-actions';
-import { isTektonCIAvailable, LatestPipelineRun } from '@janus-idp/backstage-plugin-tekton';
+import {
+  EntityGithubActionsContent,
+  isGithubActionsAvailable,
+} from '@backstage/plugin-github-actions';
+import {
+  isTektonCIAvailable,
+  LatestPipelineRun,
+} from '@janus-idp/backstage-plugin-tekton';
 import Grid from '@mui/material/Grid';
 import React from 'react';
 
