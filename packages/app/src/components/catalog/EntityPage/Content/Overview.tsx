@@ -8,9 +8,9 @@ import { EntityCatalogGraphCard } from '@backstage/plugin-catalog-graph';
 import React from 'react';
 import Grid from '@mui/material/Grid';
 import {
-    EntityArgoCDHistoryCard,
-    isArgocdAvailable,
-  } from '@roadiehq/backstage-plugin-argo-cd';
+  EntityArgoCDHistoryCard,
+  isArgocdAvailable,
+} from '@roadiehq/backstage-plugin-argo-cd';
 import { entityWarningContent } from './EntityWarning';
 
 export const overviewContent = (

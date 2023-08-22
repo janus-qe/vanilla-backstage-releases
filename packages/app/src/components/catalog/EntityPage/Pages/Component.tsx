@@ -20,9 +20,7 @@ import { isQuayAvailable, QuayPage } from '@janus-idp/backstage-plugin-quay';
 import { TektonPage } from '@janus-idp/backstage-plugin-tekton';
 import { TopologyPage } from '@janus-idp/backstage-plugin-topology';
 import { Grid } from '@material-ui/core';
-import { cicdContent } from '../Content/CI-CD';
-import { overviewContent } from '../Content/Overview';
-import { techdocsContent } from '../Content/Techdocs';
+import { overviewContent, cicdContent, techdocsContent } from '../Content';
 import { defaultEntityPage } from './DefaultEntity';
 
 const systemOrWebsitePage = (
