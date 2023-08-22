@@ -8,6 +8,7 @@ import {
   GroupTransformer,
   UserTransformer,
 } from '@janus-idp/backstage-plugin-keycloak-backend';
+import { ManagedClusterProvider } from '@janus-idp/backstage-plugin-ocm-backend';
 
 /**
  * User transformer that sanitizes .metadata.name from email address to a valid name with at most 63 characters
@@ -47,6 +48,7 @@ export default async function createPlugin(
     env.config.getOptionalBoolean('enabled.keycloak') || false;
   const isAnsibleEnabled =
     env.config.getOptionalBoolean('enabled.ansible') || false;
+  const isOcmEnabled = env.config.getOptionalBoolean('enabled.ocm') || false;
 
   if (isAnsibleEnabled) {
     builder.addEntityProvider(
@@ -66,12 +68,24 @@ export default async function createPlugin(
         id: 'development',
         logger: env.logger,
         schedule: env.scheduler.createScheduledTaskRunner({
-          frequency: { minutes: 1 },
-          timeout: { minutes: 1 },
+          frequency: { hours: 1 },
+          timeout: { minutes: 15 },
           initialDelay: { seconds: 15 },
         }),
         userTransformer: sanitizeEmailTransformer,
         groupTransformer,
+      }),
+    );
+  }
+  if (isOcmEnabled) {
+    builder.addEntityProvider(
+      ManagedClusterProvider.fromConfig(env.config, {
+        logger: env.logger,
+        schedule: env.scheduler.createScheduledTaskRunner({
+          frequency: { hours: 1 },
+          timeout: { minutes: 15 },
+          initialDelay: { seconds: 15 },
+        }),
       }),
     );
   }
