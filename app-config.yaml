@@ -74,6 +74,15 @@ proxy:
       Authorization: Bearer ${ARTIFACTORY_TOKEN}
     # Change to "false" in case of using self hosted artifactory instance with a self-signed certificate
     secure: ${ARTIFACTORY_SECURE}
+  '/nexus-repository-manager':
+    target: ${NEXUS_REPOSITORY_MANAGER_URL}
+    headers:
+      X-Requested-With: 'XMLHttpRequest'
+      # Uncomment the following line to access a private Nexus Repository Manager using a token
+      # Authorization: 'Bearer ${NEXUS_REPOSITORY_MANAGER_TOKEN}'
+    changeOrigin: true
+    # Change to "false" in case of using self hosted Nexus Repository Manager instance with a self-signed certificate
+    secure: ${NEXUS_REPOSITORY_MANAGER_SECURE}
 
 # Reference documentation http://backstage.io/docs/features/techdocs/configuration
 # Note: After experimenting with basic setup, use CI/CD to generate docs

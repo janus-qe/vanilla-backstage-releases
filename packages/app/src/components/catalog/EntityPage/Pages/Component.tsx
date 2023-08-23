@@ -20,6 +20,10 @@ import { isQuayAvailable, QuayPage } from '@janus-idp/backstage-plugin-quay';
 import { TektonPage } from '@janus-idp/backstage-plugin-tekton';
 import { TopologyPage } from '@janus-idp/backstage-plugin-topology';
 import { Grid } from '@material-ui/core';
+import {
+  isNexusRepositoryManagerAvailable,
+  NexusRepositoryManagerPage,
+} from '@janus-idp/backstage-plugin-nexus-repository-manager';
 import { overviewContent, cicdContent, techdocsContent } from '../Content';
 import { defaultEntityPage } from './DefaultEntity';
 
@@ -60,6 +64,13 @@ const systemOrWebsitePage = (
       title="Jfrog Artifactory"
     >
       <JfrogArtifactoryPage />
+    </EntityLayout.Route>
+    <EntityLayout.Route
+      if={isNexusRepositoryManagerAvailable}
+      path="/build-artifacts"
+      title="Build Artifacts"
+    >
+      <NexusRepositoryManagerPage />
     </EntityLayout.Route>
     <EntityLayout.Route path="/api" title="API">
       <Grid container spacing={3} alignItems="stretch">
