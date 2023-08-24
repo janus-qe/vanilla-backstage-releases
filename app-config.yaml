@@ -172,6 +172,9 @@ kubernetes:
     - group: 'route.openshift.io'
       apiVersion: 'v1'
       plural: 'routes'
+    - group: 'org.eclipse.che'
+      apiVersion: 'v2'
+      plural: 'checlusters'
   serviceLocatorMethod:
     type: 'multiTenant'
   clusterLocatorMethods:
