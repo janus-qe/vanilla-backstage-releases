@@ -11,8 +11,8 @@
      - `${ARGOCD_ENABLED}` Set to `true` to enable the ArgoCD backend plugin.
      - `${KEYCLOAK_ENABLED}` Set to `true` to enable the Keycloak backend plugin.
      - `${OCM_ENABLED}` Set to `true` to enable the OCM backend plugin
-     - `ANSIBLE_ENABLED` Set to `true` to enable the Ansible Automation Platform plugin
-     - `TECHDOCS_ENABLED` Set to `true` to enable the Techdocs plugin
+     - `${ANSIBLE_ENABLED}` Set to `true` to enable the Ansible Automation Platform plugin
+     - `${TECHDOCS_ENABLED}` Set to `true` to enable the Techdocs plugin
 
    - Setup the GitHub plugins (GitHub Issues and GitHub Pull Request)
 
