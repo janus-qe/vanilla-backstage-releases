@@ -11,6 +11,8 @@
      - `${ARGOCD_ENABLED}` Set to `true` to enable the ArgoCD backend plugin.
      - `${KEYCLOAK_ENABLED}` Set to `true` to enable the Keycloak backend plugin.
      - `${OCM_ENABLED}` Set to `true` to enable the OCM backend plugin
+     - `ANSIBLE_ENABLED` Set to `true` to enable the Ansible Automation Platform plugin
+     - `TECHDOCS_ENABLED` Set to `true` to enable the Techdocs plugin
 
    - Setup the GitHub plugins (GitHub Issues and GitHub Pull Request)
 
@@ -21,6 +23,12 @@
      - `${GITHUB_APP_WEBHOOK_URL}`: webhook url (this can be a dummy url from https://smee.io/ since no plugins utilize the webhook at the moment)
      - `${GITHUB_APP_WEBHOOK_SECRET}`: webhook secret
      - `${GITHUB_APP_PRIVATE_KEY}`: github app private key (make sure to remove all white spaces from the token)
+
+   - Setup the Kubernetes plugin
+
+     - `${K8S_CLUSTER_NAME}`: cluster name
+     - `${K8S_CLUSTER_URL}`: cluster url
+     - `${K8S_CLUSTER_TOKEN}`: token for the service account in the cluster
 
    - Setup the Jfrog Artifactory plugin
 
@@ -49,6 +57,7 @@
      - `${KEYCLOAK_CLIENT_SECRET}`: client secret
 
    - Setup the Azure Cloud Registry (ACR) plugin
+
      - `${ACR_SERVER_API_URL}`: the Azure Container Registry server api url. ex: `https://mycontainerregistry.azurecr.io/acr/v1/`
      - `${ACR_AUTH_TOKEN}`: the authorization token (Can either be a `Basic` or `Bearer` token)
        - To generate a `Basic` token, Go to your Azure Container Registry portal, and go to the `Access Keys` tab.
@@ -58,11 +67,14 @@
          - Ex: if `username` = john@example.com and `password` = abc123, then our `${ACR_AUTH_TOKEN}` is `Basic am9obkBleGFtcGxlLmNvbTphYmMxMjM=`
        - To generate a `Bearer` token, go to this [link](https://learn.microsoft.com/en-us/azure/container-registry/container-registry-authentication?tabs=azure-cli), then append `Bearer` in front of it and set `${ACR_AUTH_TOKEN}` to it.
      - `${ACR_SECURE}`: Change to "false" in case of using self hosted artifactory instance with a self-signed certificate
+
    - Setup the Ansible Automation Platform (AAP) plugin
+
      - `${AAP_BASE_URL}`: Base URL to the AAP instance
      - `${AAP_AUTH_TOKEN}`: Authorization Token for the AAP instance
      - `${AAP_OWNER}`: The user entity that will be the owner of the AAP catalog entities
      - `${AAP_SYSTEM}`: The system entity that will be applied to the AAP catalog entities
+
    - Setup the Nexus Repository Manager Plugin
      - `${NEXUS_REPOSITORY_MANAGER_URL}`: The URL to your nexus repository manager instance
      - `${NEXUS_REPOSITORY_MANAGER_SECURE}`: Change to "false" in case of using self hosted artifactory instance with a self-signed certificate

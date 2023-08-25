@@ -207,3 +207,5 @@ enabled:
   ansible: ${ANSIBLE_ENABLED}
   argocd: ${ARGOCD_ENABLED}
   ocm: ${OCM_ENABLED}
+  kubernetes: ${K8S_ENABLED}
+  techdocs: ${TECHDOCS_ENABLED}
