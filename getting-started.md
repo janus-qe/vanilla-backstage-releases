@@ -34,6 +34,7 @@
    - Setup the Kubernetes plugin
 
      - `${K8S_CLUSTER_NAME}`: cluster name
+       - Note: this value doesn't need to match the actual cluster name
      - `${K8S_CLUSTER_URL}`: cluster url
      - `${K8S_CLUSTER_TOKEN}`: token for the service account in the cluster
 
