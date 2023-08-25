@@ -8890,7 +8890,7 @@
   resolved "https://registry.yarnpkg.com/@types/range-parser/-/range-parser-1.2.4.tgz#cd667bcfdd025213aafb7ca5915a932590acdcdc"
   integrity sha512-EEhsLsD6UsDM1yFhAvy0Cjr6VwmpMWqFBCb9w07wVugF7w9nfajxLuVmngTIpgS6svCnm6Vaw+MZhoDCKnOfsw==
 
-"@types/react-dom@*", "@types/react-dom@<18.0.0":
+"@types/react-dom@*", "@types/react-dom@17", "@types/react-dom@<18.0.0":
   version "17.0.20"
   resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-17.0.20.tgz#e0c8901469d732b36d8473b40b679ad899da1b53"
   integrity sha512-4pzIjSxDueZZ90F52mU3aPoogkHIoSIDG+oQ+wQK7Cy2B9S+MvOqY0uEA/qawKz381qrEDkvpwyt8Bm31I8sbA==
@@ -8942,10 +8942,10 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*", "@types/react@^16.13.1 || ^17.0.0", "@types/react@^17":
-  version "17.0.62"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.62.tgz#2efe8ddf8533500ec44b1334dd1a97caa2f860e3"
-  integrity sha512-eANCyz9DG8p/Vdhr0ZKST8JV12PhH2ACCDYlFw6DIO+D+ca+uP4jtEDEpVqXZrh/uZdXQGwk7whJa3ah5DtyLw==
+"@types/react@*", "@types/react@17", "@types/react@^16.13.1 || ^17.0.0", "@types/react@^17":
+  version "17.0.65"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.65.tgz#95f6a2ab61145ffb69129d07982d047f9e0870cd"
+  integrity sha512-oxur785xZYHvnI7TRS61dXbkIhDPnGfsXKv0cNXR/0ml4SipRIFpSMzA7HMEfOywFwJ5AOnPrXYTEiTRUQeGlQ==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
@@ -9507,7 +9507,7 @@ add-stream@^1.0.0:
   resolved "https://registry.yarnpkg.com/add-stream/-/add-stream-1.0.0.tgz#6a7990437ca736d5e1288db92bd3266d5f5cb2aa"
   integrity sha512-qQLMr+8o0WC4FZGQTcJiKBVC59JylcPSrTtk6usvmIDFUOCKegapy1VHQwRbFMOFyb/inzUVqHs+eMYKDM1YeQ==
 
-add@^2.0.6:
+add@2.0.6:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/add/-/add-2.0.6.tgz#248f0a9f6e5a528ef2295dbeec30532130ae2235"
   integrity sha512-j5QzrmsokwWWp6kUcJQySpbG+xfOBqqKnup3OIk1pz+kB/80SLorZ9V8zHFLO92Lcd+hbvq8bT+zOGoPkmBV0Q==
@@ -9669,7 +9669,7 @@ app-client@x:
     modulator x
     optimist x
 
-app@^0.1.0:
+app@0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/app/-/app-0.1.0.tgz#793e12f51f7cce0922c23165261543786a747fea"
   integrity sha512-sJ25qOoKhPT57NUlCi77jgjat883FrOLIFYFNNQ4BvHbmbURgchI08i+OjC2hxQ+fT4ErgEhPc603qR/zjQUZg==
@@ -9710,14 +9710,25 @@ app@^0.1.0:
     "@backstage/plugin-techdocs-react" "1.1.7"
     "@backstage/plugin-user-settings" "0.7.4"
     "@backstage/theme" "0.4.0"
+    "@janus-idp/backstage-plugin-acr" "1.1.0"
+    "@janus-idp/backstage-plugin-jfrog-artifactory" "1.1.0"
+    "@janus-idp/backstage-plugin-nexus-repository-manager" "1.0.0"
+    "@janus-idp/backstage-plugin-ocm" "3.1.0"
+    "@janus-idp/backstage-plugin-quay" "1.3.0"
+    "@janus-idp/backstage-plugin-tekton" "1.9.0"
+    "@janus-idp/backstage-plugin-topology" "1.15.0"
     "@material-ui/core" "4.12.2"
     "@material-ui/icons" "4.9.1"
+    "@roadiehq/backstage-plugin-argo-cd" "2.2.20"
+    add "2.0.6"
+    app "0.1.0"
     history "5.0.0"
     react "17.0.2"
     react-dom "17.0.2"
     react-router "6.3.0"
     react-router-dom "6.3.0"
     react-use "17.2.4"
+    yarn "1.22.19"
 
 aproba@^1.0.3:
   version "1.2.0"
@@ -24641,11 +24652,6 @@ wordwrap@~0.0.2:
   resolved "https://registry.yarnpkg.com/wordwrap/-/wordwrap-0.0.3.tgz#a3d5da6cd5c0bc0008d37234bbaf1bed63059107"
   integrity sha512-1tMA907+V4QmxV7dbRvb4/8MaRALK6q9Abid3ndMYnbyo8piisCmeONVqVSXqQA3KaP4SLt5b7ud6E2sqP8TFw==
 
-workspace@^0.0.1-preview.1:
-  version "0.0.1-preview.1"
-  resolved "https://registry.yarnpkg.com/workspace/-/workspace-0.0.1-preview.1.tgz#0ba0a6b92b3dbc7f1502dd12bc27a37b1eec9083"
-  integrity sha512-oPpEvU7NIQ0MW7ReL+EigMUI2JPNp05kmqzWS6zXVUaSq5KxuQzfgxGd8wuurBulBkTaOnEcGge+2rriyDVHkw==
-
 wrap-ansi@^6.2.0:
   version "6.2.0"
   resolved "https://registry.yarnpkg.com/wrap-ansi/-/wrap-ansi-6.2.0.tgz#e9393ba07102e6c91a3b221478f0257cd2856e53"
@@ -24900,7 +24906,7 @@ yargs@^17.1.1, yargs@^17.2.1, yargs@^17.3.1, yargs@^17.7.2:
     y18n "^5.0.5"
     yargs-parser "^21.1.1"
 
-yarn@^1.22.19:
+yarn@1.22.19:
   version "1.22.19"
   resolved "https://registry.yarnpkg.com/yarn/-/yarn-1.22.19.tgz#4ba7fc5c6e704fce2066ecbfb0b0d8976fe62447"
   integrity sha512-/0V5q0WbslqnwP91tirOvldvYISzaqhClxzyUKXYxs07yUILIs5jx/k6CFe8bvKSkds5w+eiOqta39Wk3WxdcQ==

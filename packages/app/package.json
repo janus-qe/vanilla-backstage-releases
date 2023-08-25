@@ -61,8 +61,7 @@
     "react-router": "6.3.0",
     "react-router-dom": "6.3.0",
     "react-use": "17.2.4",
-    "workspace": "^0.0.1-preview.1",
-    "yarn": "^1.22.19"
+    "yarn": "1.22.19"
   },
   "devDependencies": {
     "@backstage/test-utils": "1.4.0",
