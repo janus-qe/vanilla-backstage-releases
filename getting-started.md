@@ -13,6 +13,7 @@
      - `${OCM_ENABLED}` Set to `true` to enable the OCM backend plugin
      - `${ANSIBLE_ENABLED}` Set to `true` to enable the Ansible Automation Platform plugin
      - `${TECHDOCS_ENABLED}` Set to `true` to enable the Techdocs plugin
+     - `${3SCALE_ENABLED}` Set to `true` to enable the 3Scale plugin
 
    - Setup the GitHub plugins (GitHub Issues and GitHub Pull Request)
 
@@ -80,6 +81,9 @@
      - `${NEXUS_REPOSITORY_MANAGER_URL}`: The URL to your nexus repository manager instance
      - `${NEXUS_REPOSITORY_MANAGER_SECURE}`: Change to "false" in case of using self hosted artifactory instance with a self-signed certificate
      - `${NEXUS_REPOSITORY_MANAGER_TOKEN}`: Authorization token to the nexus repository manager instance (not required for public nexus repository managers)
+   - Setup the 3Scale plugin
+     - `${3SCALE_BASE_URL}`: The base URL to your 3scale instance
+     - `${3SCALE_ACCESS_TOKEN}`: The access token to your 3scale instance
 
 3. Run `yarn install` to install the dependencies
 4. Start the application using `yarn dev`

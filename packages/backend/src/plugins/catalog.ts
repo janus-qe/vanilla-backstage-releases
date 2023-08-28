@@ -9,6 +9,7 @@ import {
   UserTransformer,
 } from '@janus-idp/backstage-plugin-keycloak-backend';
 import { ManagedClusterProvider } from '@janus-idp/backstage-plugin-ocm-backend';
+import { ThreeScaleApiEntityProvider } from '@janus-idp/backstage-plugin-3scale-backend';
 
 /**
  * User transformer that sanitizes .metadata.name from email address to a valid name with at most 63 characters
@@ -49,6 +50,7 @@ export default async function createPlugin(
   const isAnsibleEnabled =
     env.config.getOptionalBoolean('enabled.ansible') || false;
   const isOcmEnabled = env.config.getOptionalBoolean('enabled.ocm') || false;
+  const is3ScaleEnabled = env.config.getOptionalBoolean('enabled.threescale') || false;   
 
   if (isAnsibleEnabled) {
     builder.addEntityProvider(
@@ -86,6 +88,15 @@ export default async function createPlugin(
           timeout: { minutes: 15 },
           initialDelay: { seconds: 15 },
         }),
+      }),
+    );
+  }
+
+  if (is3ScaleEnabled) {
+    builder.addEntityProvider(
+      ThreeScaleApiEntityProvider.fromConfig(env.config, {
+        logger: env.logger,
+        scheduler: env.scheduler,
       }),
     );
   }
