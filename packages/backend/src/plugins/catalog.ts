@@ -9,9 +9,10 @@ import {
   UserTransformer,
 } from '@janus-idp/backstage-plugin-keycloak-backend';
 import { ManagedClusterProvider } from '@janus-idp/backstage-plugin-ocm-backend';
+import { ThreeScaleApiEntityProvider } from '@janus-idp/backstage-plugin-3scale-backend';
 
 /**
- * User transformer that sanitizes .metadata.name from email address to a valid name with at most 63 characters
+ * User transformer that sanitizes .metadata.name from email address to a valid name with at most 62 characters
  */
 export const sanitizeEmailTransformer: UserTransformer = async (
   entity,
@@ -21,12 +22,12 @@ export const sanitizeEmailTransformer: UserTransformer = async (
 ) => {
   entity.metadata.name = entity.metadata.name
     .replace(/[^a-zA-Z0-9]/g, '-')
-    .substring(0, 63);
+    .substring(0, 62);
   return entity;
 };
 
 /**
- * Group transformer that sanitizes .metadata.name to a valid name with at most 63 characters
+ * Group transformer that sanitizes .metadata.name to a valid name with at most 62 characters
  */
 export const groupTransformer: GroupTransformer = async (
   entity,
@@ -35,7 +36,7 @@ export const groupTransformer: GroupTransformer = async (
 ) => {
   entity.metadata.name = entity.metadata.name
     .replace(/[^a-zA-Z0-9]/g, '-')
-    .substring(0, 63);
+    .substring(0, 62);
   return entity;
 };
 
@@ -49,6 +50,7 @@ export default async function createPlugin(
   const isAnsibleEnabled =
     env.config.getOptionalBoolean('enabled.ansible') || false;
   const isOcmEnabled = env.config.getOptionalBoolean('enabled.ocm') || false;
+  const is3ScaleEnabled = env.config.getOptionalBoolean('enabled.threescale') || false;   
 
   if (isAnsibleEnabled) {
     builder.addEntityProvider(
@@ -68,8 +70,8 @@ export default async function createPlugin(
         id: 'development',
         logger: env.logger,
         schedule: env.scheduler.createScheduledTaskRunner({
-          frequency: { hours: 1 },
-          timeout: { minutes: 15 },
+          frequency: { minutes : 1 },
+          timeout: { minutes: 1 },
           initialDelay: { seconds: 15 },
         }),
         userTransformer: sanitizeEmailTransformer,
@@ -82,10 +84,19 @@ export default async function createPlugin(
       ManagedClusterProvider.fromConfig(env.config, {
         logger: env.logger,
         schedule: env.scheduler.createScheduledTaskRunner({
-          frequency: { hours: 1 },
-          timeout: { minutes: 15 },
+          frequency: { minutes: 1 },
+          timeout: { minutes: 1 },
           initialDelay: { seconds: 15 },
         }),
+      }),
+    );
+  }
+
+  if (is3ScaleEnabled) {
+    builder.addEntityProvider(
+      ThreeScaleApiEntityProvider.fromConfig(env.config, {
+        logger: env.logger,
+        scheduler: env.scheduler,
       }),
     );
   }
