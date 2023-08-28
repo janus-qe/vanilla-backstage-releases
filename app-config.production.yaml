@@ -45,6 +45,8 @@ integrations:
 
 proxy: []
 
+catalog: []
+
 argocd:
   appLocatorMethods:
     - type: 'config'
