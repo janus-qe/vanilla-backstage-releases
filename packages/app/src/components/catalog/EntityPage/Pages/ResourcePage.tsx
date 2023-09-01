@@ -1,4 +1,11 @@
-import { EntityLayout, EntitySwitch } from '@backstage/plugin-catalog';
+import {
+  EntityAboutCard,
+  EntityHasSubcomponentsCard,
+  EntityHasSystemsCard,
+  EntityLayout,
+  EntityLinksCard,
+  EntitySwitch,
+} from '@backstage/plugin-catalog';
 import Grid from '@mui/material/Grid';
 import React from 'react';
 import {
@@ -7,11 +14,33 @@ import {
   ClusterInfoCard,
 } from '@janus-idp/backstage-plugin-ocm';
 import { isType } from '../../utils';
+import { EntityCatalogGraphCard } from '@backstage/plugin-catalog-graph';
+import { entityWarningContent } from '../Content';
 
 export const resourcePage = (
   <EntityLayout>
-    {/* ... */}
-    {/* highlight-add-start */}
+    <EntityLayout.Route path="/" title="Overview">
+      <Grid container spacing={3}>
+        <EntitySwitch>
+          <Grid container spacing={3} alignItems="stretch">
+            {entityWarningContent}
+            <Grid item md={6}>
+              <EntityAboutCard variant="gridItem" />
+            </Grid>
+            <Grid item md={6} xs={12}>
+              <EntityCatalogGraphCard variant="gridItem" height={400} />
+            </Grid>
+
+            <Grid item md={4} xs={12}>
+              <EntityLinksCard />
+            </Grid>
+            <Grid item md={8} xs={12}>
+              <EntityHasSubcomponentsCard variant="gridItem" />
+            </Grid>
+          </Grid>
+        </EntitySwitch>
+      </Grid>
+    </EntityLayout.Route>
     <EntityLayout.Route path="/status" title="status">
       <EntitySwitch>
         <EntitySwitch.Case if={isType('kubernetes-cluster')}>
@@ -28,6 +57,5 @@ export const resourcePage = (
         </EntitySwitch.Case>
       </EntitySwitch>
     </EntityLayout.Route>
-    {/* highlight-add-end */}
   </EntityLayout>
 );
