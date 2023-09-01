@@ -20,42 +20,38 @@ import { entityWarningContent } from '../Content';
 export const resourcePage = (
   <EntityLayout>
     <EntityLayout.Route path="/" title="Overview">
-      <Grid container spacing={3}>
-        <EntitySwitch>
-          <Grid container spacing={3} alignItems="stretch">
-            {entityWarningContent}
-            <Grid item md={6}>
-              <EntityAboutCard variant="gridItem" />
-            </Grid>
-            <Grid item md={6} xs={12}>
-              <EntityCatalogGraphCard variant="gridItem" height={400} />
-            </Grid>
+      <Grid container spacing={3} alignItems="stretch">
+        {entityWarningContent}
+        <Grid item md={6}>
+          <EntityAboutCard variant="gridItem" />
+        </Grid>
+        <Grid item md={6} xs={12}>
+          <EntityCatalogGraphCard variant="gridItem" height={400} />
+        </Grid>
 
-            <Grid item md={4} xs={12}>
-              <EntityLinksCard />
-            </Grid>
-            <Grid item md={8} xs={12}>
-              <EntityHasSubcomponentsCard variant="gridItem" />
-            </Grid>
-          </Grid>
-        </EntitySwitch>
+        <Grid item md={4} xs={12}>
+          <EntityLinksCard />
+        </Grid>
+        <Grid item md={8} xs={12}>
+          <EntityHasSubcomponentsCard variant="gridItem" />
+        </Grid>
       </Grid>
     </EntityLayout.Route>
-    <EntityLayout.Route path="/status" title="status">
-      <EntitySwitch>
-        <EntitySwitch.Case if={isType('kubernetes-cluster')}>
-          <ClusterContextProvider>
-            <Grid container direction="column" xs={6}>
-              <Grid item>
-                <ClusterInfoCard />
-              </Grid>
-              <Grid item>
-                <ClusterAvailableResourceCard />
-              </Grid>
-            </Grid>
-          </ClusterContextProvider>
-        </EntitySwitch.Case>
-      </EntitySwitch>
+    <EntityLayout.Route
+      path="/status"
+      title="status"
+      if={isType('kubernetes-cluster')}
+    >
+      <ClusterContextProvider>
+        <Grid container direction="column" xs={6}>
+          <Grid item>
+            <ClusterInfoCard />
+          </Grid>
+          <Grid item>
+            <ClusterAvailableResourceCard />
+          </Grid>
+        </Grid>
+      </ClusterContextProvider>
     </EntityLayout.Route>
   </EntityLayout>
 );
