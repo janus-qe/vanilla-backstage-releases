@@ -20,19 +20,20 @@
 # 5. add Brew metadata
 
 # Stage 1 - Build nodejs skeleton
-FROM registry.access.redhat.com/ubi9/nodejs-18:1 AS skeleton
+FROM registry.access.redhat.com/ubi9/nodejs-18:1-62.1692771036 AS skeleton
 # hadolint ignore=DL3002
 USER 0
 
+RUN npm install -g yarn@1.22.19
 # Install isolated-vm dependencies
 # hadolint ignore=DL3041
 RUN dnf install -y -q --allowerasing --nobest nodejs-devel nodejs-libs \
-  # already installed or installed as deps: 
+  # already installed or installed as deps:
   openssl openssl-devel ca-certificates make cmake cpp gcc gcc-c++ zlib zlib-devel brotli brotli-devel python3 nodejs-packaging && \
   dnf update -y && dnf clean all
 
 # Env vars
-ENV YARN=./.yarn/releases/yarn-1.22.19.cjs
+ENV YARN=yarn
 
 # Upstream sources
 ENV EXTERNAL_SOURCE=.
@@ -40,9 +41,6 @@ ENV EXTERNAL_SOURCE_NESTED=.
 ENV CONTAINER_SOURCE=/opt/app-root/src
 
 WORKDIR $CONTAINER_SOURCE/
-COPY $EXTERNAL_SOURCE_NESTED/.yarn ./.yarn
-COPY $EXTERNAL_SOURCE_NESTED/.yarnrc.yml ./
-RUN chmod +x $YARN
 
 # Stage 2 - Install dependencies
 FROM skeleton AS deps
@@ -59,24 +57,22 @@ FROM deps AS build
 COPY $EXTERNAL_SOURCE_NESTED ./
 
 RUN git config --global --add safe.directory ./
-# Upstream only
-RUN rm app-config.yaml && mv app-config.example.yaml app-config.yaml
 
 # hadolint ignore=DL3059
-RUN $YARN build --filter=backend
+RUN $YARN build:backend
 
 # Stage 4 - Build the actual backend image and install production dependencies
 FROM skeleton AS cleanup
 
 # Upstream only - copy the install dependencies from the build stage and context
 COPY --from=build $CONTAINER_SOURCE/yarn.lock \
-     $CONTAINER_SOURCE/package.json \
-     $CONTAINER_SOURCE/packages/backend/dist/skeleton.tar.gz \
-     $CONTAINER_SOURCE/packages/backend/dist/bundle.tar.gz \
-     ./
+  $CONTAINER_SOURCE/package.json \
+  $CONTAINER_SOURCE/packages/backend/dist/skeleton.tar.gz \
+  $CONTAINER_SOURCE/packages/backend/dist/bundle.tar.gz \
+  ./
 ENV TARBALL_PATH=.
 RUN tar xzf $TARBALL_PATH/skeleton.tar.gz; tar xzf $TARBALL_PATH/bundle.tar.gz; \
-    rm -f $TARBALL_PATH/skeleton.tar.gz $TARBALL_PATH/bundle.tar.gz
+  rm -f $TARBALL_PATH/skeleton.tar.gz $TARBALL_PATH/bundle.tar.gz
 
 # Copy app-config files needed in runtime
 # Upstream only
@@ -87,17 +83,14 @@ COPY $EXTERNAL_SOURCE_NESTED/app-config*.yaml ./
 RUN $YARN install --frozen-lockfile --production --network-timeout 600000
 
 # Stage 5 - Build the runner image
-FROM registry.access.redhat.com/ubi9/nodejs-18-minimal:1 AS runner
+FROM registry.access.redhat.com/ubi9/nodejs-18-minimal:1-67 AS runner
 USER 0
 
 # Upstream only - install techdocs dependencies
 RUN microdnf update -y && \
   microdnf install -y python3 python3-pip && \
-  pip3 install mkdocs-techdocs-core==1.2.1 && \
+  pip3 install mkdocs-techdocs-core==1.* && \
   microdnf clean all
-
-# Env vars
-ENV YARN=./.yarn/releases/yarn-1.22.19.cjs
 
 # Upstream sources
 ENV CONTAINER_SOURCE=/opt/app-root/src
@@ -113,6 +106,6 @@ RUN fix-permissions ./
 # Switch to nodejs user
 USER 1001
 
-ENTRYPOINT ["node", "packages/backend", "--config", "app-config.yaml", "--config", "app-config.example.yaml", "--config", "app-config.example.production.yaml"]
+ENTRYPOINT ["node", "packages/backend", "--config", "app-config.yaml", "--config", "app-config.production.yaml"]
 
 # append Brew metadata here
