@@ -3089,7 +3089,7 @@
     "@material-ui/lab" "4.0.0-alpha.61"
     react-use "^17.2.4"
 
-"@backstage/integration@^1.5.0":
+"@backstage/integration@1.5.0", "@backstage/integration@^1.5.0":
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/@backstage/integration/-/integration-1.5.0.tgz#6c5da6495e8f73535ee0bd203785a0c89d4445ad"
   integrity sha512-rMs3eGiSN+A/oYnOL2u+w96drbxvXBP16G7Eoy6FZWelANWO/nDpZ8DxFBBWxfj0U/ZeS33DfYH7aIWyPzivoA==
@@ -9083,7 +9083,7 @@
   resolved "https://registry.yarnpkg.com/@types/range-parser/-/range-parser-1.2.4.tgz#cd667bcfdd025213aafb7ca5915a932590acdcdc"
   integrity sha512-EEhsLsD6UsDM1yFhAvy0Cjr6VwmpMWqFBCb9w07wVugF7w9nfajxLuVmngTIpgS6svCnm6Vaw+MZhoDCKnOfsw==
 
-"@types/react-dom@*", "@types/react-dom@17", "@types/react-dom@<18.0.0":
+"@types/react-dom@*", "@types/react-dom@<18.0.0":
   version "17.0.20"
   resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-17.0.20.tgz#e0c8901469d732b36d8473b40b679ad899da1b53"
   integrity sha512-4pzIjSxDueZZ90F52mU3aPoogkHIoSIDG+oQ+wQK7Cy2B9S+MvOqY0uEA/qawKz381qrEDkvpwyt8Bm31I8sbA==
@@ -9135,7 +9135,7 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*", "@types/react@17", "@types/react@^16.13.1 || ^17.0.0", "@types/react@^17":
+"@types/react@*", "@types/react@^16.13.1 || ^17.0.0", "@types/react@^17":
   version "17.0.65"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.65.tgz#95f6a2ab61145ffb69129d07982d047f9e0870cd"
   integrity sha512-oxur785xZYHvnI7TRS61dXbkIhDPnGfsXKv0cNXR/0ml4SipRIFpSMzA7HMEfOywFwJ5AOnPrXYTEiTRUQeGlQ==
