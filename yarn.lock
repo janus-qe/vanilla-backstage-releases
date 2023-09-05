@@ -5025,6 +5025,13 @@
     "@backstage/plugin-scaffolder-node" "^0.1.5"
     "@kubernetes/client-node" "^0.18.1"
 
+"@janus-idp/backstage-scaffolder-backend-module-quay@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@janus-idp/backstage-scaffolder-backend-module-quay/-/backstage-scaffolder-backend-module-quay-1.1.0.tgz#7516f81d7e9c22e661fdfb868165d889e9048b21"
+  integrity sha512-Kc0LbkcXz/JMQ2djYYrHSmSszb0ROhdVVr0KXuC/8dZxIwyXAflKfvzY4V4c22P0mlOcbjyNMCMqyWfaCjenhw==
+  dependencies:
+    "@backstage/plugin-scaffolder-node" "^0.1.5"
+
 "@janus-idp/shared-react@1.3.0":
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/@janus-idp/shared-react/-/shared-react-1.3.0.tgz#c945834ee77548ad0336f9f7b61b1e6d85cdcbe6"
