@@ -3,7 +3,6 @@ import {
   EntityHasSubcomponentsCard,
   EntityLayout,
   EntityLinksCard,
-  EntitySwitch,
 } from '@backstage/plugin-catalog';
 import Grid from '@mui/material/Grid';
 import React from 'react';
