@@ -9,6 +9,7 @@ import { ScmIntegrations } from '@backstage/integration';
 import type { PluginEnvironment } from '../types';
 import { createKubernetesNamespaceAction } from '@janus-idp/backstage-scaffolder-backend-module-kubernetes';
 import { createQuayRepositoryAction } from '@janus-idp/backstage-scaffolder-backend-module-quay';
+import { createSonarQubeProjectAction } from '@janus-idp/backstage-scaffolder-backend-module-sonarqube';
 
 export default async function createPlugin(
   env: PluginEnvironment,
@@ -30,6 +31,7 @@ export default async function createPlugin(
     ...builtInActions,
     createKubernetesNamespaceAction(catalogClient),
     createQuayRepositoryAction(),
+    createSonarQubeProjectAction(),
   ];
 
   return await createRouter({

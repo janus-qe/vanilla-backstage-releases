@@ -41,6 +41,7 @@
     "@janus-idp/backstage-plugin-ocm-backend": "3.2.0",
     "@janus-idp/backstage-scaffolder-backend-module-kubernetes": "1.1.0",
     "@janus-idp/backstage-scaffolder-backend-module-quay": "1.1.0",
+    "@janus-idp/backstage-scaffolder-backend-module-sonarqube": "1.1.0",
     "@roadiehq/backstage-plugin-argo-cd-backend": "2.11.0",
     "@types/react": "^17",
     "@types/react-dom": "^17",
