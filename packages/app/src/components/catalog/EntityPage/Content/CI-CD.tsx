@@ -7,6 +7,11 @@ import {
   isTektonCIAvailable,
   LatestPipelineRun,
 } from '@janus-idp/backstage-plugin-tekton';
+import {
+  isArgocdAvailable,
+  EntityArgoCDHistoryCard,
+} from '@roadiehq/backstage-plugin-argo-cd';
+
 import Grid from '@mui/material/Grid';
 import React from 'react';
 
@@ -23,6 +28,13 @@ export const cicdContent = (
       <EntitySwitch.Case if={isTektonCIAvailable}>
         <Grid item xs={12}>
           <LatestPipelineRun linkTekton />
+        </Grid>
+      </EntitySwitch.Case>
+    </EntitySwitch>
+    <EntitySwitch>
+      <EntitySwitch.Case if={isArgocdAvailable}>
+        <Grid item xs={12}>
+          <EntityArgoCDHistoryCard />
         </Grid>
       </EntitySwitch.Case>
     </EntitySwitch>

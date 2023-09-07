@@ -50,7 +50,8 @@ export default async function createPlugin(
   const isAnsibleEnabled =
     env.config.getOptionalBoolean('enabled.ansible') || false;
   const isOcmEnabled = env.config.getOptionalBoolean('enabled.ocm') || false;
-  const is3ScaleEnabled = env.config.getOptionalBoolean('enabled.threescale') || false;   
+  const is3ScaleEnabled =
+    env.config.getOptionalBoolean('enabled.threescale') || false;
 
   if (isAnsibleEnabled) {
     builder.addEntityProvider(
@@ -70,7 +71,7 @@ export default async function createPlugin(
         id: 'development',
         logger: env.logger,
         schedule: env.scheduler.createScheduledTaskRunner({
-          frequency: { minutes : 1 },
+          frequency: { minutes: 1 },
           timeout: { minutes: 1 },
           initialDelay: { seconds: 15 },
         }),
