@@ -8,7 +8,7 @@ import { EntityCatalogGraphCard } from '@backstage/plugin-catalog-graph';
 import React from 'react';
 import Grid from '@mui/material/Grid';
 import {
-  EntityArgoCDHistoryCard,
+  EntityArgoCDOverviewCard,
   isArgocdAvailable,
 } from '@roadiehq/backstage-plugin-argo-cd';
 import { entityWarningContent } from './EntityWarning';
@@ -32,7 +32,7 @@ export const overviewContent = (
     <EntitySwitch>
       <EntitySwitch.Case if={isArgocdAvailable}>
         <Grid item sm={6}>
-          <EntityArgoCDHistoryCard />
+          <EntityArgoCDOverviewCard />
         </Grid>
       </EntitySwitch.Case>
     </EntitySwitch>
