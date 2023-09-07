@@ -50,7 +50,8 @@ export default async function createPlugin(
   const isAnsibleEnabled =
     env.config.getOptionalBoolean('enabled.ansible') || false;
   const isOcmEnabled = env.config.getOptionalBoolean('enabled.ocm') || false;
-  const is3ScaleEnabled = env.config.getOptionalBoolean('enabled.threescale') || false;   
+  const is3ScaleEnabled =
+    env.config.getOptionalBoolean('enabled.threescale') || false;
 
   if (isAnsibleEnabled) {
     builder.addEntityProvider(

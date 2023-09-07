@@ -42,7 +42,7 @@
     "@janus-idp/backstage-scaffolder-backend-module-kubernetes": "1.1.0",
     "@janus-idp/backstage-scaffolder-backend-module-quay": "1.1.0",
     "@janus-idp/backstage-scaffolder-backend-module-sonarqube": "1.1.0",
-    "@roadiehq/backstage-plugin-argo-cd-backend": "2.11.0",
+    "@roadiehq/backstage-plugin-argo-cd-backend": "2.8.1",
     "add": "^2.0.6",
     "app": "link:../app",
     "backend": "^0.0.0",
