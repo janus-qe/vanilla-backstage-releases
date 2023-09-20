@@ -22,7 +22,7 @@ export const sanitizeEmailTransformer: UserTransformer = async (
 ) => {
   entity.metadata.name = entity.metadata.name
     .replace(/[^a-zA-Z0-9]/g, '-')
-    .substring(0, 62);
+    .substring(0, 63);
   return entity;
 };
 
@@ -36,7 +36,7 @@ export const groupTransformer: GroupTransformer = async (
 ) => {
   entity.metadata.name = entity.metadata.name
     .replace(/[^a-zA-Z0-9]/g, '-')
-    .substring(0, 62);
+    .substring(0, 63);
   return entity;
 };
 
